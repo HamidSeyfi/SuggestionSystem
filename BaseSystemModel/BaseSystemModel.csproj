@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5973FB3A-B521-4038-8F8C-6D40F70917C2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SuggestionSystem.BaseSystemModel</RootNamespace>
+    <AssemblyName>BaseSystemModel</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Model\Table\Access.cs" />
+    <Compile Include="Model\Table\Role.cs" />
+    <Compile Include="Model\Table\RoleAccess_Rel.cs" />
+    <Compile Include="Model\Table\RoleSuggestionStatusBusiness_Rel.cs" />
+    <Compile Include="Model\Table\Suggestion.cs" />
+    <Compile Include="Model\Table\SuggestionBusiness.cs" />
+    <Compile Include="Model\Table\SuggestionBusinessBelonging.cs" />
+    <Compile Include="Model\Table\SuggestionBusinessBelongingValues_Rel.cs" />
+    <Compile Include="Model\Table\SuggestionOperation.cs" />
+    <Compile Include="Model\Table\SuggestionStatus.cs" />
+    <Compile Include="Model\Table\SuggestionStatusBusiness_Rel.cs" />
+    <Compile Include="Model\Table\sysdiagrams.cs" />
+    <Compile Include="Model\Table\User.cs" />
+    <Compile Include="Model\Table\UserRole_Rel.cs" />
+    <Compile Include="Model\Table\vwRoleAccess.cs" />
+    <Compile Include="Model\Table\vwRoleSuggestionStatusBusiness.cs" />
+    <Compile Include="Model\Table\vwSuggestion.cs" />
+    <Compile Include="Model\Table\vwSuggestionBusiness.cs" />
+    <Compile Include="Model\Table\vwSuggestionStatusBusiness.cs" />
+    <Compile Include="Model\Table\vwUserRole.cs" />
+    <Compile Include="Model\Table\vwUserRoleAccess.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\ConnectionString.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
