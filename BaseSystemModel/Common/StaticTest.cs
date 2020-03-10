@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business
+namespace SuggestionSystem.BaseSystemModel.Common
 {
-    public class Class1
+    public class StaticTest
     {
+        public static int  Counter { get; set; }
     }
 }

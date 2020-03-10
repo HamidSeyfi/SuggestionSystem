@@ -18,7 +18,12 @@ namespace SuggestionSystem
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
 
-            BaseSystemModel.Utility.ConnectionString.SqlServerConnectionString = @"data source=DESKTOP-THBF5B2\MSSQLSERVER2016;initial catalog=SuggestionSystem;integrated security=True";
+            BaseSystemModel.Common.ConnectionString.SqlServerConnectionString = @"data source=DESKTOP-THBF5B2\MSSQLSERVER2016;initial catalog=SuggestionSystem;integrated security=True";
+
+
+
+            SuggestionSystem.BaseSystemModel.Common.StaticTest.Counter++;
+
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SuggestionSystem.BaseSystemModel.Utility
+namespace SuggestionSystem.BaseSystemModel.Common
 {
     public  class ConnectionString
     {

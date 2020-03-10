@@ -16,6 +16,7 @@ namespace SuggestionSystem.BaseSystemModel.Model.Table
             Suggestion1 = new HashSet<Suggestion>();
             SuggestionOperation = new HashSet<SuggestionOperation>();
             UserRole_Rel = new HashSet<UserRole_Rel>();
+            Log = new HashSet<Log>();
         }
 
         public int Id { get; set; }
@@ -34,11 +35,13 @@ namespace SuggestionSystem.BaseSystemModel.Model.Table
 
         [Required]
         [StringLength(10)]
-        public string UserCode { get; set; }
+        public string UserName { get; set; }
 
         [Required]
         [StringLength(50)]
         public string Password { get; set; }
+
+        public bool IsActive { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Suggestion> Suggestion { get; set; }
@@ -51,5 +54,8 @@ namespace SuggestionSystem.BaseSystemModel.Model.Table
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserRole_Rel> UserRole_Rel { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Log> Log { get; set; }
     }
 }

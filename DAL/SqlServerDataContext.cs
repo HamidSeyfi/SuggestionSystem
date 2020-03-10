@@ -9,7 +9,7 @@ namespace SuggestionSystem.DAL
     public partial class SqlServerDataContext : DbContext
     {
         public SqlServerDataContext()
-            : base(SuggestionSystem.BaseSystemModel.Utility.ConnectionString.SqlServerConnectionString)
+            : base(SuggestionSystem.BaseSystemModel.Common.ConnectionString.SqlServerConnectionString)
         {
         }
 
@@ -26,6 +26,7 @@ namespace SuggestionSystem.DAL
         public virtual DbSet<SuggestionStatusBusiness_Rel> SuggestionStatusBusiness_Rel { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<Log> Log { get; set; }
         public virtual DbSet<UserRole_Rel> UserRole_Rel { get; set; }
         public virtual DbSet<vwRoleAccess> vwRoleAccess { get; set; }
         public virtual DbSet<vwRoleSuggestionStatusBusiness> vwRoleSuggestionStatusBusiness { get; set; }
@@ -112,7 +113,7 @@ namespace SuggestionSystem.DAL
                 .IsUnicode(false);
 
             modelBuilder.Entity<User>()
-                .Property(e => e.UserCode)
+                .Property(e => e.UserName)
                 .IsUnicode(false);
 
             modelBuilder.Entity<User>()
@@ -137,6 +138,19 @@ namespace SuggestionSystem.DAL
                 .WithRequired(e => e.User)
                 .HasForeignKey(e => e.FK_UserId)
                 .WillCascadeOnDelete(false);
+
+
+            modelBuilder.Entity<Log>()
+               .Property(e => e.LogName)
+               .IsUnicode(false);
+
+            modelBuilder.Entity<User>()
+               .HasMany(e => e.Log)
+               .WithOptional(e => e.User)
+               .HasForeignKey(e => e.FK_UserId);
+
+
+
         }
     }
 }

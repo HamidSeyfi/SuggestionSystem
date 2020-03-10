@@ -10,6 +10,7 @@ namespace SuggestionSystem.Controllers
     {
         public ActionResult Index()
         {
+            SuggestionSystem.BaseSystemModel.Common.StaticTest.Counter++;
             return View();
         }
 
