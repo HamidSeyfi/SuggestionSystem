@@ -13,7 +13,7 @@ namespace SuggestionSystem.Business
     public class UserBiz
     {
         public static UserBiz Instance = new UserBiz();
-        public UserSession Login(User user)
+        public UserSession Login(UserDTO user)
         {
             using (var dbContext = new SqlServerDataContext())
             {

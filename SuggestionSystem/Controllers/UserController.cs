@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using SuggestionSystem.BaseSystemModel.Model.Table;
+using SuggestionSystem.BaseSystemModel.Model.DTO;
 using SuggestionSystem.Business;
 using SuggestionSystem.Business.Common;
 using Newtonsoft.Json;
@@ -20,8 +20,8 @@ namespace SuggestionSystem.Controllers
 
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Login(User user)
+        //[ValidateAntiForgeryToken]
+        public ActionResult Login(UserDTO user)
         {
             try
             {
