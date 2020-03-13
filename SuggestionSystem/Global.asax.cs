@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using SuggestionSystem.BaseSystemModel.Common;
+using SuggestionSystem.Business.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -26,47 +29,39 @@ namespace SuggestionSystem
 
         protected void Application_Error(object sender, EventArgs e)
         {
-            var error = Server.GetLastError();
+            Exception exception = Server.GetLastError();
+            Response.Clear();
 
-            var temp = 0;
+            HttpException httpException = exception as HttpException;
 
-            //var httpException = error as HttpException;
-            //if (httpException != null)
-            //{
-            //    string action;
-            //    switch (httpException.GetHttpCode())
-            //    {
-            //        case 404:
-            //            // page not found
-            //            action = "HttpError404";
-            //            break;
-            //        case 500:
-            //            // server error
-            //            action = "HttpError500";
-            //            break;
-            //        default:
-            //            action = "General";
-            //            break;
-            //    }
-            //    Response.Redirect(String.Format("~/Error/{0}/?message={1}", action, error.Message));
-            //}
+            if (httpException != null)
+            {
+                string action;
+
+                switch (httpException.GetHttpCode())
+                {
+                    case 404:
+                        // page not found
+                        action = "HttpError404";
+                        break;
+                    case 500:
+                        // server error
+                        action = "HttpError500";
+                        break;
+                    default:
+                        action = "General";
+                        break;
+                }
+
+                // clear error on server
+                Server.ClearError();
 
 
-            //var errorMsg = HttpContext.Current.Request.Url.ToString();
-            //errorMsg += error.Message != null ? "\nMessage : " + error.Message.ToString() : "";
-            //errorMsg += error.InnerException?.Message != null ? "\nInnerExceptionMessage : " + error.InnerException.Message.ToString() : "";
-            //errorMsg += error.InnerException?.InnerException?.Message != null ? "\nInnerExceptionInnerExceptionMessage : " + error.InnerException.InnerException.Message.ToString() : "";
+                LogBiz.LogException("Application_Error", exception, LogType.Exception);
 
-            //Hamid.Business.LogBiz.Log("Application_Error", errorMsg);
-
-            //Response.Clear(); // to ensure that any content written to the response stream before the error occurred is removed.
-
-            //if (HttpContext.Current.IsDebuggingEnabled == false)
-            //{
-            //    Server.ClearError();// to stop ASP.NET from serving the yellow screen of death.
-            //    Response.Redirect("~/Error/Index");
-            //    //Response.Redirect("~/Error/Index?msg=someThing");
-            //}
+                //Response.Redirect(String.Format("~/Error/{0}/?message={1}", action, exception.Message));
+                Response.Redirect(String.Format("~/Error/{0}", action));
+            }
 
 
         }

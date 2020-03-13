@@ -13,7 +13,18 @@ namespace SuggestionSystem.Business.Common
     {
         public static void Log(string logName, string logText, LogType logType)
         {
-            LogIntoSqlServer(logName, logText, logType);
+
+
+            using (var context = new SqlServerDataContext())
+            {
+
+                var x = context.User.FirstOrDefault();
+            }
+
+
+
+
+                LogIntoSqlServer(logName, logText, logType);
         }
 
         public static void LogException(string logName, Exception ex, LogType logType)

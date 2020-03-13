@@ -66,11 +66,9 @@
 
         return true;
     });
-
-
-
-
-
+//--------------------------------------------------------
+    //غیر فعال کردن AutoComplete فرم ها
+    $("form").attr("autocomplete", "off");
 //--------------------------------------------------------
 //function AlertDanger(msg,duration=3000) {
 //    AlertMsg(msg,"danger",duration)
@@ -92,11 +90,25 @@
 //    }, duration)
 
 //}
+//--------------------------------------------------------
 
 //--------------------------------------------------------
-//ShowAlert('text',?'type',?6000)
-//type : primary , secondary , success , danger , warning , info , light , dark
-function ShowAlert(text, type = "danger", length = 6000) {
+});
+
+//--------------------------------------------------------
+const AlertTypes = {
+    PRIMARY: 'primary',
+    SECONDARY: 'secondary',
+    SUCCESS: 'success',
+    DANGER: 'danger',
+    WARNING: 'warning',
+    INFO: 'info',
+    LIGHT: 'light',
+    DARK: 'dark',
+}
+
+//ShowAlert('text',?AlertTypes.type,?6000)
+function ShowAlert(text, type = AlertTypes.DANGER, length = 3000) {
 
     var lastId = 0;
     if ($("#alertContainer").css("display") != "block") {
@@ -127,4 +139,3 @@ function ShowAlert(text, type = "danger", length = 6000) {
     }, length);
 }
 //--------------------------------------------------------
-});

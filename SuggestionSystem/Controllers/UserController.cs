@@ -20,7 +20,7 @@ namespace SuggestionSystem.Controllers
 
 
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public ActionResult Login(UserDTO user)
         {
             try
