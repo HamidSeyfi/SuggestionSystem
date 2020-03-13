@@ -34,9 +34,11 @@ namespace SuggestionSystem
 
             HttpException httpException = exception as HttpException;
 
+
+            string action;
+
             if (httpException != null)
             {
-                string action;
 
                 switch (httpException.GetHttpCode())
                 {
@@ -53,15 +55,22 @@ namespace SuggestionSystem
                         break;
                 }
 
-                // clear error on server
-                Server.ClearError();
-
-
-                LogBiz.LogException("Application_Error", exception, LogType.Exception);
-
-                //Response.Redirect(String.Format("~/Error/{0}/?message={1}", action, exception.Message));
-                Response.Redirect(String.Format("~/Error/{0}", action));
             }
+            else
+            {
+                action = "General";
+            }
+
+
+
+            // clear error on server
+            Server.ClearError();
+
+
+            LogBiz.LogException("Application_Error", exception);
+
+            //Response.Redirect(String.Format("~/Error/{0}/?message={1}", action, exception.Message));
+            Response.Redirect(String.Format("~/Error/{0}", action));
 
 
         }

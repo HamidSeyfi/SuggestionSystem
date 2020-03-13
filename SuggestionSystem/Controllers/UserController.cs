@@ -8,11 +8,13 @@ using SuggestionSystem.Business;
 using SuggestionSystem.Business.Common;
 using Newtonsoft.Json;
 using SuggestionSystem.BaseSystemModel.Common;
+using SuggestionSystem.Filters;
 
 namespace SuggestionSystem.Controllers
 {
     public class UserController : Controller
     {
+        
         public ActionResult Login()
         {
             return View();

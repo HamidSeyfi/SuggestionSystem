@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SuggestionSystem.BaseSystemModel.Model.Table;
 using SuggestionSystem.BaseSystemModel.Common;
+using System.Web.Routing;
 
 namespace SuggestionSystem.Business.Common
 {
@@ -24,10 +25,10 @@ namespace SuggestionSystem.Business.Common
 
 
 
-                LogIntoSqlServer(logName, logText, logType);
+            LogIntoSqlServer(logName, logText, logType);
         }
 
-        public static void LogException(string logName, Exception ex, LogType logType)
+        public static void LogException(string logName, Exception ex, LogType logType = LogType.Exception)
         {
 
             if (ex.GetType() == typeof(BusinessException))
@@ -43,6 +44,16 @@ namespace SuggestionSystem.Business.Common
 
                 LogIntoSqlServer(logName, logMessage, LogType.Exception);
             }
+        }
+
+        public static void LogFilter(RouteData routeData, LogType logType)
+        {
+            
+            var areaName = (string)routeData.DataTokens["area"];
+            var controllerName = (string)routeData.Values["controller"];
+            var actionName = (string)routeData.Values["action"];
+            var logName = $"{(string.IsNullOrWhiteSpace(areaName) ? "" : (areaName + "/"))}{controllerName}/{actionName}";
+            LogIntoSqlServer(logName, "", logType);
         }
 
         private static void LogIntoSqlServer(string logName, string logText, LogType logType)

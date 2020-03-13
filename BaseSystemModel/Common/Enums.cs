@@ -10,7 +10,9 @@ namespace SuggestionSystem.BaseSystemModel.Common
     {
         InputUser = 1,
         OutputUser = 2,
-        Exception = 3
+        Exception = 3,
+        LogFilterActionExecuting = 10,
+        LogFilterResultExecuted = 11,
         
     }
 }
