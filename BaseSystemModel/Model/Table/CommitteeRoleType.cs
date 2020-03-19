@@ -6,14 +6,15 @@ namespace SuggestionSystem.BaseSystemModel.Model.Table
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class SuggestionStatusBusiness_Rel
+    [Table("CommitteeRoleType")]
+    public partial class CommitteeRoleType
     {
         public int Id { get; set; }
 
-        public int FK_SuggestionStatusId { get; set; }
+        public int Code { get; set; }
 
-        public int FK_SuggestionBusinessId { get; set; }
-
-        public virtual SuggestionStatus SuggestionStatus { get; set; }
+        [Required]
+        [StringLength(100)]
+        public string Name { get; set; }
     }
 }

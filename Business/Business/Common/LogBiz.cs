@@ -12,7 +12,7 @@ namespace SuggestionSystem.Business.Common
 {
     public class LogBiz
     {
-        public static void Log(string logName, string logText, LogType logType)
+        public static void Log(string logName, string logText, LogTypeEnum logType)
         {
 
 
@@ -28,7 +28,7 @@ namespace SuggestionSystem.Business.Common
             LogIntoSqlServer(logName, logText, logType);
         }
 
-        public static void LogException(string logName, Exception ex, LogType logType = LogType.Exception)
+        public static void LogException(string logName, Exception ex, LogTypeEnum logType = LogTypeEnum.Exception)
         {
 
             if (ex.GetType() == typeof(BusinessException))
@@ -42,11 +42,11 @@ namespace SuggestionSystem.Business.Common
                     + ex.InnerException?.InnerException?.Message + "*"
                     + ex.InnerException?.InnerException?.InnerException?.Message;
 
-                LogIntoSqlServer(logName, logMessage, LogType.Exception);
+                LogIntoSqlServer(logName, logMessage, LogTypeEnum.Exception);
             }
         }
 
-        public static void LogFilter(RouteData routeData, LogType logType)
+        public static void LogFilter(RouteData routeData, LogTypeEnum logType)
         {
             
             var areaName = (string)routeData.DataTokens["area"];
@@ -56,7 +56,7 @@ namespace SuggestionSystem.Business.Common
             LogIntoSqlServer(logName, "", logType);
         }
 
-        private static void LogIntoSqlServer(string logName, string logText, LogType logType)
+        private static void LogIntoSqlServer(string logName, string logText, LogTypeEnum logType)
         {
             var userSession = (SuggestionSystem.BaseSystemModel.Model.DTO.UserSession)System.Web.HttpContext.Current.Session["UserSession"];
 

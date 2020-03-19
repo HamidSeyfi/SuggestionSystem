@@ -27,12 +27,12 @@ namespace SuggestionSystem.Controllers
         {
             try
             {
-                LogBiz.Log("User/Login", JsonConvert.SerializeObject(user), LogType.InputUser);
+                LogBiz.Log("User/Login", JsonConvert.SerializeObject(user), LogTypeEnum.InputUser);
 
                 var userSession = UserBiz.Instance.Login(user);
                 Session["UserSession"] = userSession;
 
-                LogBiz.Log("User/Login", JsonConvert.SerializeObject(userSession), LogType.OutputUser);
+                LogBiz.Log("User/Login", JsonConvert.SerializeObject(userSession), LogTypeEnum.OutputUser);
 
                 return Json(new
                 {
@@ -41,7 +41,7 @@ namespace SuggestionSystem.Controllers
             }
             catch (Exception ex)
             {
-                LogBiz.LogException("User/Login", ex, LogType.OutputUser);
+                LogBiz.LogException("User/Login", ex, LogTypeEnum.OutputUser);
 
                 return Json(new
                 {

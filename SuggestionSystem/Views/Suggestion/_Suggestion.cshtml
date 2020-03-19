@@ -1,0 +1,37 @@
+﻿@using SuggestionSystem.BaseSystemModel.Common;
+@model SuggestionSystem.BaseSystemModel.Model.Table.Suggestion
+@{
+
+    ViewBag.Title =((Operation)ViewBag.Operation==Operation.Create?"ایجاد" :
+                    (Operation)ViewBag.Operation==Operation.Edit?"ویرایش" :
+                    (Operation)ViewBag.Operation==Operation.Details?"نمایش"  : "حذف")+ " پیشنهاد";
+
+    string actionName = ViewBag.Operation;
+}
+
+<h2>پیشنهاد</h2>
+
+@using (Html.BeginForm(actionName, "Suggestion", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        <div class="form-group">
+            <label>عنوان پیشنهاد</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="ایجاد" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("لغو", "Index")
+</div>

@@ -6,32 +6,25 @@ namespace SuggestionSystem.BaseSystemModel.Model.Table
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("vwSuggestionStatusBusiness")]
-    public partial class vwSuggestionStatusBusiness
+    public partial class UserAccess_Rel
     {
         [Key]
         [Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int SuggestionStatusBusiness_RelID { get; set; }
+        public int Id { get; set; }
 
         [Key]
         [Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int SuggestionStatusId { get; set; }
+        public int FK_UserId { get; set; }
 
         [Key]
         [Column(Order = 2)]
-        [StringLength(500)]
-        public string SuggestionStatusName { get; set; }
-
-        [Key]
-        [Column(Order = 3)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int SuggestionBusinessId { get; set; }
+        public int FK_AccessId { get; set; }
 
-        [Key]
-        [Column(Order = 4)]
-        [StringLength(50)]
-        public string SuggestionBusinessName { get; set; }
+        public virtual Access Access { get; set; }
+
+        public virtual User User { get; set; }
     }
 }

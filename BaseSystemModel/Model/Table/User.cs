@@ -12,11 +12,11 @@ namespace SuggestionSystem.BaseSystemModel.Model.Table
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
+            Log = new HashSet<Log>();
             Suggestion = new HashSet<Suggestion>();
             Suggestion1 = new HashSet<Suggestion>();
-            SuggestionOperation = new HashSet<SuggestionOperation>();
-            UserRole_Rel = new HashSet<UserRole_Rel>();
-            Log = new HashSet<Log>();
+            UserAccess_Rel = new HashSet<UserAccess_Rel>();
+            UserCommitteeRole_Rel = new HashSet<UserCommitteeRole_Rel>();
         }
 
         public int Id { get; set; }
@@ -44,18 +44,18 @@ namespace SuggestionSystem.BaseSystemModel.Model.Table
         public bool IsActive { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Log> Log { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Suggestion> Suggestion { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Suggestion> Suggestion1 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SuggestionOperation> SuggestionOperation { get; set; }
+        public virtual ICollection<UserAccess_Rel> UserAccess_Rel { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserRole_Rel> UserRole_Rel { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Log> Log { get; set; }
+        public virtual ICollection<UserCommitteeRole_Rel> UserCommitteeRole_Rel { get; set; }
     }
 }

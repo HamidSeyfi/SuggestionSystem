@@ -19,12 +19,12 @@ namespace SuggestionSystem.BaseSystemModel.Model.Table
         [StringLength(500)]
         public string LogName { get; set; }
 
-        //[Required]
+        [Required]
         [StringLength(1000)]
         public string LogText { get; set; }
 
-        public virtual User User { get; set; }
-
         public byte LogType { get; set; }
+
+        public virtual User User { get; set; }
     }
 }

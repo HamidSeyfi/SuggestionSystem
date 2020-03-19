@@ -12,7 +12,7 @@ namespace SuggestionSystem.Filters
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            LogBiz.LogFilter(filterContext.RouteData, BaseSystemModel.Common.LogType.LogFilterActionExecuting);
+            LogBiz.LogFilter(filterContext.RouteData, BaseSystemModel.Common.LogTypeEnum.LogFilterActionExecuting);
         }
 
         public override void OnActionExecuted(ActionExecutedContext filterContext)
@@ -27,7 +27,7 @@ namespace SuggestionSystem.Filters
 
         public override void OnResultExecuted(ResultExecutedContext filterContext)
         {
-            LogBiz.LogFilter(filterContext.RouteData, BaseSystemModel.Common.LogType.LogFilterResultExecuted);
+            LogBiz.LogFilter(filterContext.RouteData, BaseSystemModel.Common.LogTypeEnum.LogFilterResultExecuted);
         }
 
         
